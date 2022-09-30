@@ -18,6 +18,7 @@ import { getSellPriceFromFutBin } from "./futbinUtil";
 import { writeToLog } from "./logUtil";
 import { sendNotificationToUser } from "./notificationUtil";
 import { appendTransactions } from "./statsUtil";
+import { getStatsValue } from "../handlers/statsProcessor";
 
 const errorCodeCountMap = new Map();
 
@@ -108,7 +109,7 @@ export const buyPlayer = (
 
           if (notificationType === "B" || notificationType === "A") {
             sendNotificationToUser(
-              "| " + playerName.trim() + " | " + priceTxt.trim() + " | buy |"
+              "| ✅ | " + playerName.trim() + " | " + priceTxt.trim() + " (profit " + profit + ") | " + getStatsValue("coins") + " | " + new Date().toLocaleTimeString()
             );
           }
         } else {
@@ -127,11 +128,13 @@ export const buyPlayer = (
           );
           if (notificationType === "L" || notificationType === "A") {
             sendNotificationToUser(
-              "| " +
+              "| ❌ | " +
                 playerName.trim() +
                 " | " +
                 priceTxt.trim() +
-                " | failure |"
+                " | " +
+				getStatsValue("coins") +
+				" | " + new Date().toLocaleTimeString()
             );
           }
 
