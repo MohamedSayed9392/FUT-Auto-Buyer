@@ -19,6 +19,10 @@
     ·
   <a href="https://www.youtube.com/channel/UC5eLkjmLU2TcE4oiJM9PsyA?sub_confirmation=1">Subscribe</a>
   
+  Same As Original Autobuyer made by Ckalgos in Addition to :
+  - Change notification log to be more readable like this | ✅ | Player | 1200 (profit 130) | 101,475 | 7:57:33 PM
+  - Add coins threshold to stop Auto Buyer when coins reached it with notification ⚠ | 🪙 Coins to stop threshold reached |
+
   # Must Read :no_entry_sign:
   
   These tool is developed to demonstrate how someone can develop script to break our web application by automating stuffs and only for learning purpose.
