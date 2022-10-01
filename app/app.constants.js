@@ -42,6 +42,7 @@ export const defaultBuyerSetting = {
   idSellCheckBuyPrice: true,
   idAbSellToggle: false,
   idAbRandMinBidToggle: true,
+  idAbStopIfCoinsLessThan: 0
 };
 
 export const defaultCommonSetting = {

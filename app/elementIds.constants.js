@@ -103,3 +103,5 @@ export const idSession = generateId(15);
 
 export const idFinishMp3 = "elem_" + generateId(15);
 export const idLog = "elem_" + generateId(15);
+
+export const idAbStopIfCoinsLessThan = "elem_" + generateId(15);
