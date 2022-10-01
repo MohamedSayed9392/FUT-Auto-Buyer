@@ -5,6 +5,7 @@ import {
   idAbWaitTime,
   idAbAddBuyDelay,
   idAbDelayToAdd,
+  idAbStopIfCoinsLessThan,
 } from "../../../elementIds.constants";
 import { generateTextInput } from "../../../utils/uiUtils/generateTextInput";
 import { generateToggleInput } from "../../../utils/uiUtils/generateToggleInput";
@@ -61,6 +62,13 @@ export const safeSettingsView = function () {
     "CommonSettings",
     "text",
     "\\d+-\\d+[H|M|S|h|m|s]$"
+  )} 
+  ${generateTextInput(
+    "Stop If Coins <=",
+    "0",
+    { idAbStopIfCoinsLessThan },
+    "Leave 0 as default",
+    "CommonSettings"
   )} 
   </div>`;
 };

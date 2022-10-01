@@ -64,6 +64,11 @@ export const buyPlayer = (
 
           const shouldList = sellPrice && !isNaN(sellPrice) && isValidRating;
           const profit = sellPrice * 0.95 - price;
+		  
+		  const userCoins = services.User.getUser().coins.amount;
+		  
+		  const coinsToStop = buyerSetting["idAbStopIfCoinsLessThan"];
+		  const isCoinsToStopEnabled = userCoins <= coinsToStop;
 
           if (isBin) {
             const winCount = increAndGetStoreValue("winCount");
@@ -109,8 +114,17 @@ export const buyPlayer = (
 
           if (notificationType === "B" || notificationType === "A") {
             sendNotificationToUser(
-              "| ✅ | " + playerName.trim() + " | " + priceTxt.trim() + " (profit " + profit + ") | " + getStatsValue("coins") + " | " + new Date().toLocaleTimeString()
+              "✅ | " + playerName.trim() + " | " + priceTxt.trim() + " (profit " + profit + ") | " + "🪙 " + userCoins.toLocaleString() + " | " + new Date().toLocaleTimeString()
             );
+          }
+		  
+          if(isCoinsToStopEnabled){
+            writeToLog(
+              `⚠ | 🪙 Coins to stop threshold reached | ${userCoins.toLocaleString()}`
+            );
+            sendNotificationToUser(
+                  "⚠ | 🪙 Coins to stop threshold reached" + " | ") + userCoins.toLocaleString(); 
+            stopAutoBuyer();
           }
         } else {
           let lossCount = increAndGetStoreValue("lossCount");
@@ -128,12 +142,10 @@ export const buyPlayer = (
           );
           if (notificationType === "L" || notificationType === "A") {
             sendNotificationToUser(
-              "| ❌ | " +
+              "❌ | " +
                 playerName.trim() +
                 " | " +
                 priceTxt.trim() +
-                " | " +
-				getStatsValue("coins") +
 				" | " + new Date().toLocaleTimeString()
             );
           }
