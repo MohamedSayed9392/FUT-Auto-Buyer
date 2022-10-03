@@ -114,7 +114,7 @@ export const buyPlayer = (
 
           if (notificationType === "B" || notificationType === "A") {
             sendNotificationToUser(
-              "✅ | " + playerName.trim() + " | " + priceTxt.trim() + " (profit " + profit + ") | " + "🪙 " + userCoins.toLocaleString() + " | " + new Date().toLocaleTimeString()
+              "✅ | " + playerName.trim() + " | " + priceTxt.trim() + " (profit " + profit + ") | " + "🪙 " + userCoins.toLocaleString() + " | " + new Date().toLocaleTimeString(),true
             );
           }
 		  
@@ -123,7 +123,7 @@ export const buyPlayer = (
               `⚠ | 🪙 Coins to stop threshold reached | ${userCoins.toLocaleString()}`
             );
             sendNotificationToUser(
-                  "⚠ | 🪙 Coins to stop threshold reached" + " | ") + userCoins.toLocaleString(); 
+                  "⚠ | 🪙 Coins to stop threshold reached" + " | " + userCoins.toLocaleString(),false); 
             stopAutoBuyer();
           }
         } else {
@@ -146,7 +146,8 @@ export const buyPlayer = (
                 playerName.trim() +
                 " | " +
                 priceTxt.trim() +
-				" | " + new Date().toLocaleTimeString()
+				" | " + new Date().toLocaleTimeString(),
+        false
             );
           }
 
