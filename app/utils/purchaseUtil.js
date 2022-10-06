@@ -114,7 +114,7 @@ export const buyPlayer = (
 
           if (notificationType === "B" || notificationType === "A") {
             sendNotificationToUser(
-              "✅ | " + playerName.trim() + " | " + priceTxt.trim() + " (profit " + profit + ") | " + "🪙 " + userCoins.toLocaleString() + " | " + new Date().toLocaleTimeString(),true
+              "✅ | " + playerName.trim() + " | " + priceTxt.trim() + " (profit " + profit + ") | " + "🪙 " + userCoins.toLocaleString(),true
             );
           }
 		  
@@ -145,8 +145,7 @@ export const buyPlayer = (
               "❌ | " +
                 playerName.trim() +
                 " | " +
-                priceTxt.trim() +
-				" | " + new Date().toLocaleTimeString(),
+                priceTxt.trim(),
         false
             );
           }
