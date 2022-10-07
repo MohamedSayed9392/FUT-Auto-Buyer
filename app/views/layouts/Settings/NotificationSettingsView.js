@@ -1,6 +1,7 @@
 import {
   idAbCustomDiscordNameNotificationToggle,
   idAbMessageNotificationToggle,
+  idAbSendListingNotificationToggle,
   idAbSoundToggle,
   idCapatchaMp3,
   idDiscordChannelId,
@@ -71,6 +72,12 @@ export const notificationSettingsView = function () {
     "Your FUT Market Alert App's Token",
     "CommonSettings",
     "text"
+  )}
+  ${generateToggleInput(
+    "Send Listing Notification",
+    { idAbSendListingNotificationToggle },
+    "",
+    "CommonSettings"
   )}`
      : ""
  }
