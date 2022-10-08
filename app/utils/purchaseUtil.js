@@ -70,8 +70,11 @@ export const buyPlayer = (
 		  const coinsToStop = buyerSetting["idAbStopIfCoinsLessThan"];
 		  const isCoinsToStopEnabled = userCoins <= coinsToStop;
 
+      var winCount = 0;
+      var bidCount = 0;
+      var lossCount = 0;
           if (isBin) {
-            const winCount = increAndGetStoreValue("winCount");
+            winCount = increAndGetStoreValue("winCount");
             appendTransactions(
               `[${new Date().toLocaleTimeString()}] ${playerName.trim()} buy success - Price : ${price}`
             );
@@ -92,7 +95,7 @@ export const buyPlayer = (
               setValue("sellQueue", sellQueue);
             }
           } else {
-            const bidCount = increAndGetStoreValue("bidCount");
+            bidCount = increAndGetStoreValue("bidCount");
             appendTransactions(
               `[${new Date().toLocaleTimeString()}] ${playerName.trim()} bid success - Price : ${price}`
             );
@@ -114,8 +117,7 @@ export const buyPlayer = (
 
           if (notificationType === "B" || notificationType === "A") {
             sendNotificationToUser(
-              "✅ | " + `${isBin ? "buy" : "bid"} |` + playerName.trim() + " | " + priceTxt.trim() + " (profit " + profit + ") | " + "🪙 " + userCoins.toLocaleString(),true
-            );
+              `✅ | ${isBin ? winCount : bidCount} | ${isBin ? "buy" : "bid"} | ${playerName.trim()} | ${priceTxt.trim()} (profit ${profit}) | 🪙 ${userCoins.toLocaleString()}`,true);
           }
 		  
           if(isCoinsToStopEnabled){
@@ -127,7 +129,7 @@ export const buyPlayer = (
             stopAutoBuyer();
           }
         } else {
-          let lossCount = increAndGetStoreValue("lossCount");
+          lossCount = increAndGetStoreValue("lossCount");
           appendTransactions(
             `[${new Date().toLocaleTimeString()}] ${playerName.trim()} buy failed - Price : ${price}`
           );
@@ -142,12 +144,7 @@ export const buyPlayer = (
           );
           if (notificationType === "L" || notificationType === "A") {
             sendNotificationToUser(
-              "❌ | " +
-                playerName.trim() +
-                " | " +
-                priceTxt.trim(),
-        false
-            );
+              `❌ | ${lossCount} | ${playerName.trim()} | ${priceTxt.trim()}`, false);
           }
 
           if (buyerSetting["idAbStopErrorCode"]) {
