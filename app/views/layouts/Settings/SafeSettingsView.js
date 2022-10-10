@@ -6,6 +6,8 @@ import {
   idAbAddBuyDelay,
   idAbDelayToAdd,
   idAbStopIfCoinsLessThan,
+  idAbOverSearchWarning,
+  idAbMaxPurchases
 } from "../../../elementIds.constants";
 import { generateTextInput } from "../../../utils/uiUtils/generateTextInput";
 import { generateToggleInput } from "../../../utils/uiUtils/generateToggleInput";
@@ -20,6 +22,13 @@ export const safeSettingsView = function () {
     "CommonSettings",
     "text",
     "\\d+-\\d+$"
+  )}
+  ${generateTextInput(
+    "Max purchases per search request",
+    1,
+    { idAbMaxPurchases },
+    "Increase this, only if you are Adding Delay After Buy of alteast 3S",
+    "CommonSettings"
   )}
   ${generateTextInput(
     "Pause Cycle",
@@ -62,6 +71,12 @@ export const safeSettingsView = function () {
     "CommonSettings",
     "text",
     "\\d+-\\d+[H|M|S|h|m|s]$"
+  )}
+  ${generateToggleInput(
+    "Show Search Exceed Warning",
+    { idAbOverSearchWarning },
+    "(Shows a warning in log if number of search per minute exceeds 15)",
+    "CommonSettings"
   )} 
   ${generateTextInput(
     "Stop If Coins <=",
