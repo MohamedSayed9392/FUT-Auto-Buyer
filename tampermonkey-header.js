@@ -2,7 +2,7 @@ module.exports = {
   headers: {
     name: "FUT Auto Buyer",
     namespace: "http://tampermonkey.net/",
-    version: "1.4.0",
+    version: "1.4.0 [Edited]",
     description: "FUT Auto Buyer",
     author: "CK Algos",
     match: [
@@ -21,13 +21,13 @@ module.exports = {
     ],
     require: [
       "https://code.jquery.com/jquery-3.6.1.min.js",
-      "https://raw.githubusercontent.com/ckalgos/FUT-Auto-Buyer/main/external/discord.11.4.2.min.js",
+      "https://raw.githubusercontent.com/MohamedSayed9392/FUT-Auto-Buyer/main/external/discord.11.4.2.min.js",
       "https://github.com/ckalgos/fut-trade-enhancer/releases/latest/download/fut-trade-enhancer.user.js",
     ],
     updateURL:
-      "https://github.com/ckalgos/fut-auto-buyer/releases/latest/download/fut-auto-buyer.user.js",
+      "https://github.com/MohamedSayed9392/fut-auto-buyer/releases/latest/download/fut-auto-buyer.user.js",
     downloadURL:
-      "https://github.com/ckalgos/fut-auto-buyer/releases/latest/download/fut-auto-buyer.user.js",
+      "https://github.com/MohamedSayed9392/fut-auto-buyer/releases/latest/download/fut-auto-buyer.user.js",
     noFrame: true,
   },
 };
