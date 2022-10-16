@@ -22,7 +22,7 @@ module.exports = {
     require: [
       "https://code.jquery.com/jquery-3.6.1.min.js",
       "https://raw.githubusercontent.com/MohamedSayed9392/FUT-Auto-Buyer/main/external/discord.11.4.2.min.js",
-      "https://github.com/ckalgos/fut-trade-enhancer/releases/latest/download/fut-trade-enhancer.user.js",
+      "https://github.com/MohamedSayed9392/fut-trade-enhancer/releases/latest/download/fut-trade-enhancer.user.js",
     ],
     updateURL:
       "https://github.com/MohamedSayed9392/fut-auto-buyer/releases/latest/download/fut-auto-buyer.user.js",
