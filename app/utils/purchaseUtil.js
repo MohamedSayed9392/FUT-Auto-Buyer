@@ -73,13 +73,19 @@ export const buyPlayer = (
       var winCount = 0;
       var bidCount = 0;
       var lossCount = 0;
+
+          var purchasedCardCount = getValue("purchasedCardCount");
+          var cardsToBuy = buyerSetting["idAbCardCount"];
+
+          const currentStats = getValue("sessionStats");
+
           if (isBin) {
             winCount = increAndGetStoreValue("winCount");
             appendTransactions(
               `[${new Date().toLocaleTimeString()}] ${playerName.trim()} buy success - Price : ${price}`
             );
             writeToLog(
-              `W: ${winCount} ${playerName} buy success added to sell queue`,
+              `W: ${winCount} ${playerName} ${cardsToBuy != 1000 ? (`[${purchasedCardCount} Of ${cardsToBuy}]`) : ""} buy success added to sell queue`,
               idProgressAutobuyer
             );
 
@@ -117,7 +123,7 @@ export const buyPlayer = (
 
           if (notificationType === "B" || notificationType === "A") {
             sendNotificationToUser(
-              `✅ | ${isBin ? winCount : bidCount} | ${isBin ? "buy" : "bid"} | ${playerName.trim()} | ${priceTxt.trim()} (profit ${profit}) | 🪙 ${userCoins.toLocaleString()}`,true);
+              `✅ ${isBin ? winCount : bidCount} | ${isBin ? "buy" : "bid"} | ${playerName.trim()} | ${priceTxt.trim()} (profit ${profit})\n\r 🪙 ${userCoins.toLocaleString()}\n\r 🤑 ${currentStats.profit}\n\r 🔍 ${currentStats.searchCount} ${cardsToBuy != 1000 ? (`\n\r #️⃣ Bought ${purchasedCardCount} Of ${cardsToBuy}`) : ""}`,true);
           }
 		  
           if(isCoinsToStopEnabled){
@@ -144,7 +150,7 @@ export const buyPlayer = (
           );
           if (notificationType === "L" || notificationType === "A") {
             sendNotificationToUser(
-              `❌ | ${lossCount} | ${playerName.trim()} | ${priceTxt.trim()}`, false);
+              `❌ ${lossCount} | ${playerName.trim()} | ${priceTxt.trim()}\n\r🔍 ${currentStats.searchCount}`, false);
           }
 
           if (buyerSetting["idAbStopErrorCode"]) {
