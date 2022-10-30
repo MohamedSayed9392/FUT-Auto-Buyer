@@ -36,7 +36,7 @@ export const buyPlayer = (
       this,
       async function (sender, data) {
         let priceTxt = formatString(price.toString(), 6);
-        const notificationType = buyerSetting["idNotificationType"];
+        const notificationType = buyerSetting["idNotificationType"] || "";
 
         if (data.success) {
           if (isBin) {
@@ -124,7 +124,7 @@ export const buyPlayer = (
             }
           }
 
-          if (notificationType === "B" || notificationType === "A") {
+          if (notificationType.includes("B") || notificationType === "A") {
             sendNotificationToUser(
               `✅ ${isBin ? winCount : bidCount} | ${isBin ? "buy" : "bid"} | ${playerName.trim()} | ${priceTxt.trim()} (profit ${profit})\n\r 🪙 ${userCoins.toLocaleString()}\n\r 🤑 ${currentStats.profit}\n\r 🔍 ${currentStats.searchCount} ${cardsToBuy != 1000 ? (`\n\r #️⃣ Bought ${purchasedCardCount} Of ${cardsToBuy}`) : ""}`,true);
           }
@@ -151,7 +151,7 @@ export const buyPlayer = (
             })`,
             idProgressAutobuyer
           );
-          if (notificationType === "L" || notificationType === "A") {
+          if (notificationType.includes("L") || notificationType === "A") {
             sendNotificationToUser(
               `❌ ${lossCount} | ${playerName.trim()} | ${priceTxt.trim()}\n\r🔍 ${currentStats.searchCount}`, false);
           }
