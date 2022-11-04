@@ -81,6 +81,14 @@ export const buyPlayer = (
           var cardsToBuy = buyerSetting["idAbCardCount"];
 
           const currentStats = getValue("sessionStats");
+          var currentStatsSearchCount = 0;
+          var currentStatsProfit = 0;
+
+          if(currentStats){
+            currentStatsSearchCount = currentStats.searchCount;
+            currentStatsProfit = currentStats.profit;
+          }
+          
 
           if (isBin) {
             winCount = increAndGetStoreValue("winCount");
@@ -126,7 +134,7 @@ export const buyPlayer = (
 
           if (notificationType.includes("B") || notificationType === "A") {
             sendNotificationToUser(
-              `✅ ${isBin ? winCount : bidCount} | ${isBin ? "buy" : "bid"} | ${playerName.trim()} | ${priceTxt.trim()} (profit ${profit})\n\r 🪙 ${userCoins.toLocaleString()}\n\r 🤑 ${currentStats.profit}\n\r 🔍 ${currentStats.searchCount} ${cardsToBuy != 1000 ? (`\n\r #️⃣ Bought ${purchasedCardCount} Of ${cardsToBuy}`) : ""}`,true);
+              `✅ ${isBin ? winCount : bidCount} | ${isBin ? "buy" : "bid"} | ${playerName.trim()} | ${priceTxt.trim()} (profit ${profit})\n\r 🪙 ${userCoins.toLocaleString()}\n\r 🤑 ${currentStatsProfit}\n\r 🔍 ${currentStatsSearchCount} ${cardsToBuy != 1000 ? (`\n\r #️⃣ Bought ${purchasedCardCount} Of ${cardsToBuy}`) : ""}`,true);
           }
 		  
           if(isCoinsToStopEnabled){
@@ -153,7 +161,7 @@ export const buyPlayer = (
           );
           if (notificationType.includes("L") || notificationType === "A") {
             sendNotificationToUser(
-              `❌ ${lossCount} | ${playerName.trim()} | ${priceTxt.trim()}\n\r🔍 ${currentStats.searchCount}`, false);
+              `❌ ${lossCount} | ${playerName.trim()} | ${priceTxt.trim()}\n\r🔍 ${currentStatsSearchCount}`, false);
           }
 
           if (buyerSetting["idAbStopErrorCode"]) {
