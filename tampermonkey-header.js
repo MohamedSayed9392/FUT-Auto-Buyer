@@ -2,7 +2,7 @@ module.exports = {
   headers: {
     name: "FUT Auto Buyer [Edited]",
     namespace: "http://tampermonkey.net/",
-    version: "1.5.1 [Edited]",
+    version: "1.5.4 [Edited]",
     description: "FUT Auto Buyer",
     author: "CK Algos",
     match: [
@@ -18,6 +18,7 @@ module.exports = {
       "discordapp.com",
       "futbin.org",
       "exp.host",
+      "on.aws",
     ],
     require: [
       "https://code.jquery.com/jquery-3.6.1.min.js",
