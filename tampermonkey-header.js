@@ -2,12 +2,12 @@ module.exports = {
   headers: {
     name: "FUT Auto Buyer [Edited]",
     namespace: "http://tampermonkey.net/",
-    version: "1.6.2 [Edited]",
+    version: "2.0.0",
     description: "FUT Auto Buyer",
     author: "CK Algos",
     match: [
-      "https://www.ea.com/*/fifa/ultimate-team/web-app/*",
-      "https://www.ea.com/fifa/ultimate-team/web-app/*",
+      "https://www.ea.com/*/ea-sports-fc/ultimate-team/web-app/*",
+      "https://www.ea.com/ea-sports-fc/ultimate-team/web-app/*",
     ],
     grant: ["GM_xmlhttpRequest"],
     connect: [
